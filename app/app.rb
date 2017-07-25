@@ -1,8 +1,7 @@
 require 'sinatra/base'
 require_relative './models/link'
-
+# class BookmarkManager
 class BookmarkManager < Sinatra::Base
-
   get '/links' do
     @links = Link.all
     erb :'links/index'
@@ -17,5 +16,5 @@ class BookmarkManager < Sinatra::Base
     redirect '/links'
   end
 
-  run! if app_file == $0
+  run! if app_file == $PROGRAM_NAME
 end

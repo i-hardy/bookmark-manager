@@ -1,5 +1,4 @@
 feature 'Viewing links' do
-
   scenario 'I can see existing links on the links page' do
     Link.destroy
     Link.create(url: 'http://makersacademy.com', title: 'Makers Academy')
