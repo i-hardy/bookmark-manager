@@ -3,7 +3,7 @@ feature 'Adding links' do
     visit '/links/new'
     fill_in 'title', with: 'Geek Stall'
     fill_in 'url', with: 'http://geekstall.com'
-    fill_in 'tag', with: 'shopping'
+    fill_in 'tags', with: 'shopping'
     click_button 'Add link'
   end
 
@@ -21,8 +21,7 @@ feature 'Adding links' do
   end
 
   scenario 'I can add tags to new links' do
-    within 'ul#links' do
-      expect(page).to have_content('shopping')
-    end
+    link = Link.last
+    expect(link.tags.map(&:name)).to include('shopping')
   end
 end
