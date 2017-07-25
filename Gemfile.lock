@@ -3,7 +3,6 @@ GEM
   specs:
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
-    ansi (1.5.0)
     ast (2.3.0)
     bcrypt (3.1.11)
     bcrypt-ruby (3.1.5)
@@ -65,9 +64,7 @@ GEM
       dm-core (~> 1.2.0)
     do_postgres (0.10.17)
       data_objects (= 0.10.17)
-    docile (1.1.5)
     fastercsv (1.5.5)
-    hirb (0.7.3)
     json (1.8.6)
     json_pure (1.8.6)
     mime-types (3.1)
@@ -110,15 +107,6 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.8.1)
-    simplecov (0.14.1)
-      docile (~> 1.1.0)
-      json (>= 1.8, < 3)
-      simplecov-html (~> 0.10.0)
-    simplecov-console (0.4.1)
-      ansi
-      hirb
-      simplecov
-    simplecov-html (0.10.0)
     sinatra (2.0.0)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -139,11 +127,8 @@ DEPENDENCIES
   data_mapper
   database_cleaner
   dm-postgres-adapter
-  rake
   rspec
   rubocop
-  simplecov
-  simplecov-console
   sinatra
 
 RUBY VERSION
