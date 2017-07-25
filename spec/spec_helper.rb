@@ -1,35 +1,28 @@
+require File.join(File.dirname(__FILE__), '..', 'app/app.rb')
+
+require 'database_cleaner'
+require 'capybara'
+require 'capybara/rspec'
+require 'rspec'
+require './app/models/link'
+
+Capybara.app = BookmarkManager
 
 RSpec.configure do |config|
-  # rspec-expectations config goes here. You can use an alternate
-  # assertion/expectation library such as wrong or the stdlib/minitest
-  # assertions if you prefer.
-  config.expect_with :rspec do |expectations|
-    # This option will default to `true` in RSpec 4. It makes the `description`
-    # and `failure_message` of custom matchers include text for helper methods
-    # defined using `chain`, e.g.:
-    #     be_bigger_than(2).and_smaller_than(4).description
-    #     # => "be bigger than 2 and smaller than 4"
-    # ...rather than:
-    #     # => "be bigger than 2"
-    expectations.include_chain_clauses_in_custom_matcher_descriptions = true
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
   end
 
-  # rspec-mocks config goes here. You can use an alternate test double
-  # library (such as bogus or mocha) by changing the `mock_with` option here.
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
   end
-
-  config.shared_context_metadata_behavior = :apply_to_host_groups
-
-  ENV['RACK_ENV'] = 'test'
-
-  require File.join(File.dirname(__FILE__), '..', 'app/app.rb')
-
-  require 'capybara'
-  require 'capybara/rspec'
-  require 'rspec'
-  require './app/models/link'
-
-  Capybara.app = BookmarkManager
 end
