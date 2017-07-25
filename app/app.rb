@@ -1,6 +1,6 @@
 require 'sinatra/base'
 
-class BOOKMARKS < Sinatra::Base
+class BookmarkManager < Sinatra::Base
 
   get '/' do
     erb :index
@@ -8,7 +8,7 @@ class BOOKMARKS < Sinatra::Base
 
   get '/links' do
     erb :links
-  en
+  end
 
   run! if app_file == $0
 end
