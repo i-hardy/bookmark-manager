@@ -7,6 +7,7 @@ class Link
   property :id,     Serial
   property :title,  String
   property :url,    String
+  property :tag,    String
 end
 
 postgres_database = "postgres://localhost/bookmark_manager_#{ENV['RACK_ENV']}"
