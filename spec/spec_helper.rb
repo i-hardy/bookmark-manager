@@ -6,6 +6,7 @@ require 'database_cleaner'
 require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
+require_relative 'helpers/session'
 require_relative 'web_helper'
 
 Capybara.app = BookmarkManager
@@ -27,4 +28,6 @@ RSpec.configure do |config|
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
   end
+
+  config.include SessionHelpers
 end
